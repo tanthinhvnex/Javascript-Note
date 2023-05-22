@@ -1,4 +1,4 @@
-// Trạng thái: hết 137
+// Trạng thái: hết 145, chưa 146, 147
 
 // Tóm tắt:
 // Các get element lấy trực tiếp element:
@@ -104,3 +104,81 @@ console.log(headingElement.title);
 // Nếu lấy một attribute KHÔNG HỢP LỆ trong element thì không thể dùng cách trên
 // Để lấy ra một attribute hợp lệ hoặc không hợp lệ trong element
 console.log(headingElement.getAttribute("attributeName"));
+
+// ////////// innerText vs textContent Property
+// innerText là một thuộc tính của element
+// textContent vừa là thuộc tính của element vừa là của TextNode
+console.log(headingElement.innerText);
+console.log(headingElement.textContent);
+// Có thể thay đổi textNode bằng cách tương tự
+headingElement.innerText = "Thay doi noi dung";
+console.log(headingElement.textContent);
+
+var head = document.querySelector(".head");
+// innerText hiển thị nội dung như trình duyệt hiển thị
+console.log(head.innerText);
+// textContent hiển thị nội dung là những gì có trong source code
+// bỏ qua các tagName
+console.log(head.textContent);
+// trình duyệt sẽ không hiểu được đây là một thẻ
+// chỉ xem là text thôi
+// các <> sẽ được hiểu là HTML Entrities
+// Để xem được entritie, nhấn phải chuột chọn Edit as HTML
+head.innerText = "<i>Text</i>";
+console.log(head.innerText);
+// Khi kiểm tra trong element devtools
+// Các dấu xuống dòng được thay bằng thẻ br (nhận biết được dấu xuống dòng)
+// Trên cùng 1 dòng, có nhiều dấu cách thì được xem là một dấu cách
+head.innerText = `
+
+a
+              New       Heading
+
+`;
+// Khi kiểm tra trong element devtools
+// Các dấu xuống dòng được hiểu là các dấu cách
+// Do được hiểu là các dấu cách nên HTML sẽ xem chỉ có 1 dấu
+// Một dấu cách ở đầu và một dấu cách ở cuối
+// Tóm lại textContent không nhận diện được dấu xuống dòng
+// Mà chỉ xem là dấu cách
+// Nên khi mở element để xem ta trông nó rất bình thường
+// Để xem nội dung rõ ràng, cần phải nháy đúp chuột
+// Mở comment để xem
+// head.textContent = `
+
+// a
+//      New Heading            Content
+
+// `;
+
+// //////////// innerHTML
+// Dùng để thêm textNode và element
+// Thay vì <> sẽ chuyển thành HTML Entrities
+// innerHTML hiểu được đây là các thẻ
+var boxElement = document.querySelector(".box");
+boxElement.innerHTML = "<h1 class='className'>Heading innerHTML</h1>";
+// Mở comment để thấy nội dung được ghi đè
+// boxElement.innerHTML = "Nội dung được thêm vào không có thẻ (text), ghi đè lên nội dung cũ";
+
+// So với innerText, textContent sẽ lược bỏ đi các TagName
+// innerHTML trả về nội dung gồm cả TagName ở dạng chuỗi
+console.log(boxElement.innerHTML);
+
+// outerHTML
+// giống với innerHTML + lấy luôn cả nội dung của bản thân nó
+// vì vậy khi set textNode bằng outerHTML nó sẽ ghi đè lên chính nó
+// và nội dung con của nó luôn (innerHTML chỉ lấy nội dung con)
+console.log(boxElement.outerHTML);
+// Xem xét code phía dưới để thấy đối tượng không còn tồn tại thực sự
+var outerHTMLElement = document.querySelector(".box_1");
+outerHTMLElement.outerHTML = "<span> Thay đổi nội dung</span>";
+// có thể thấy sau khi dùng outerHTML để thay đổi nội dung
+// Thì box_1 đã không còn tồn tại
+// tuy vậy nếu console .box_1 thì vẫn sẽ thấy xuất hiện
+// này là do trong bộ nhớ còn lưu trữ
+// nói chung là sau khi đã outerHTML cho một đối tượng
+// thì không dùng lại đối tượng đó nữa
+// cho dù nội dung outerHTML mới được thêm giữ nguyên các attribute
+// chỉ thay đổi textNode, thì trình duyệt vẫn sẽ hủy đối tượng
+// vừa thực thi outerHTML
+console.log(outerHTMLElement.outerHTML);
