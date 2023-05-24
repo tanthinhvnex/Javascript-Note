@@ -1,3 +1,5 @@
+// Trạng thái: còn phần đệ quy
+
 // for: lặp với điều kiện đúng
 // for/in: lặp qua key của đối tượng
 // for/of: lặp qua value của đối tượng
@@ -50,3 +52,22 @@ console.log(Object.values(myInfo));
 for (var value of Object.values(myInfo)) {
     console.log(value);
 }
+
+// while loop
+var k = 0;
+while (k < 1) {
+    ++k;
+}
+// do..while loop
+// chạy ít nhất một lần
+var t = 0;
+do {
+    ++t;
+} while (t < 4);
+
+// break, continue hoạt động như c++
+// set trong javascript
+// set chỉ lưu mỗi value 1 lần
+// set sắp xếp tăng dần, giảm dần tùy trường hợp
+var array = [1, 2, 3, 1, 2, 3];
+console.log(new Set(array));
