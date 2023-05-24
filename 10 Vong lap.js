@@ -4,7 +4,7 @@
 // while: lặp với điều kiện đúng
 // do/while: lặp ít nhất 1 lần, sau đó lặp với ĐK đúng
 
-// cú pháp vòng lặp for:
+// for loop:
 for (var i = 1; i <= 10; i++) {
     console.log(i);
 }
