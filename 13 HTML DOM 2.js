@@ -52,3 +52,6 @@ setTimeout(() => {
     boxElement.classList.remove("red");
 }, 5000);
 // toggle tương tự
+
+// DOM Events
+// Search: DOM Events
