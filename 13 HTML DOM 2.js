@@ -55,3 +55,11 @@ setTimeout(() => {
 
 // DOM Events
 // Search: DOM Events
+// 1. Attribute Events
+// 2. Assign event using the element node
+var h2Element = document.querySelector("h2");
+h2Element.onclick = function () {
+    console.log("dong 62 ne");
+};
+var h2Ele = document.querySelectorAll("h2");
+for (var i = 0; i < h2Ele.length; i++) {}

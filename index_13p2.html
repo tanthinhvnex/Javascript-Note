@@ -9,8 +9,18 @@
     </head>
     <body>
         <div class="box box_1 box_1"></div>
-        <script src="13 HTML DOM 2.js"></script>
         <h1 onclick="console.log(this)">abc</h1>
         <h1 onclick="console.log(this.innerText)">abc</h1>
+        <!-- Có tính nổi bọt, sự kiện con -> sự kiện cha -->
+        <h1 onclick="console.log(this)">
+            <span onclick="console.log(this)">xyz</span>
+        </h1>
+        <h1 onclick="console.log(this)">
+            <span>mnp</span>
+        </h1>
+        <h2>H2 Heading 1</h2>
+        <h2>H2 Heading 2</h2>
+        <h2>H2 Heading 3</h2>
+        <script src="13 HTML DOM 2.js"></script>
     </body>
 </html>
