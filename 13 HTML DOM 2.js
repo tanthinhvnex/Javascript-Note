@@ -62,4 +62,12 @@ h2Element.onclick = function () {
     console.log("dong 62 ne");
 };
 var h2Ele = document.querySelectorAll("h2");
-for (var i = 0; i < h2Ele.length; i++) {}
+console.log(h2Ele);
+// lưu ý biến i vẫn tồn tại sau khi thoát vòng for
+for (var i = 0; i < h2Ele.length; i++) {
+    h2Ele[i].onclick = function (e) {
+        console.log(e.target);
+    };
+}
+// biến i mang giá trị là 3
+console.log(i);
