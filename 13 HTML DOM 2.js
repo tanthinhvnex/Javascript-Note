@@ -71,3 +71,47 @@ for (var i = 0; i < h2Ele.length; i++) {
 }
 // biến i mang giá trị là 3
 console.log(i);
+
+// DOM Events Example
+// 1. Input/ Select
+
+var inputElement = document.querySelector('input[type="text"]');
+inputElement.onchange = function (e) {
+    console.log(e.target.value);
+};
+
+var checkElement = document.querySelector('input[type="checkbox"]');
+checkElement.onchange = function (e) {
+    // kiểm tra xem có được check hay không
+    console.log(e.target.checked);
+};
+
+var selectElement = document.querySelector("select");
+selectElement.onchange = function (e) {
+    console.log(e.target.value);
+};
+
+// 2. Key up/ Down
+var inputElement = document.querySelector('input[type="text"]');
+inputElement.onkeyup = function (e) {
+    console.log(e.target.value);
+};
+// Video: sử dụng onkeypress
+// Không còn hỗ trợ onkeypress
+// Dùng onkeydown để thay thế
+document.onkeydown = function (e) {
+    // xuất ra giá trị vừa nhập vào từ bàn phím
+    // trong video dùng which, tuy nhiên which hiện tại không được dùng nữa
+    // thay vào đó ta dùng key
+    console.log(e.key);
+    // cách để thao tác với một nút trên web
+    // ví dụ như cài đặt ESC để thoát
+    switch (e.key) {
+        case "Enter":
+            console.log("Enter !!!");
+            break;
+        case "Escape":
+            console.log("ESC !!!");
+            break;
+    }
+};
