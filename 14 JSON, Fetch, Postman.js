@@ -31,3 +31,22 @@ console.log(
 // Các bất đồng bộ hay gặp: setTimeOut, setInterval, fetch
 // XMLHttpRequest, file reading,
 // request animation frame
+
+// Callback Hell
+// Pyramid of doom
+
+// Ví dụ về Pain
+// Việc bên trong phụ thuộc vào việc bên ngoài (Callback Hell)
+// Để làm được việc 2 thì cần phải xong việc 1
+setTimeout(function () {
+    console.log(1); // Viec 1
+    setTimeout(function () {
+        console.log(2); // Viec 2
+        setTimeout(function () {
+            console.log(3); // Viec 3
+            setTimeout(function () {
+                console.log(4); // Viec 4
+            }, 1000);
+        }, 1000);
+    }, 1000);
+}, 1000);
