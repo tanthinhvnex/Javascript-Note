@@ -25,3 +25,9 @@ console.log(
         age: 18,
     })
 );
+
+// Sync / Async: Đồng bộ / Bất đồng bộ
+// Đồng bộ: là viết trước chạy trước
+// Các bất đồng bộ hay gặp: setTimeOut, setInterval, fetch
+// XMLHttpRequest, file reading,
+// request animation frame
