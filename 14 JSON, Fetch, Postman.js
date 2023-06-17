@@ -50,3 +50,33 @@ setTimeout(function () {
         }, 1000);
     }, 1000);
 }, 1000);
+
+// 3 Trạng thái của Promise
+// 1. Pendding: chờ
+// 2. Fulfilled: thành công
+// 3. Rejected: thất bại
+
+// Promise dùng để xử lý vấn đề bất đồng bộ
+// Trước khi có Promise thì dùng callback
+// Nhưng dùng callback thì bị callback hell
+var promise = new Promise(
+    // Executor
+    // Hàm này sẽ được thực thi ngay thi gọi new Promise
+    // thậm chí hàm này còn được thực thi trước khi biến promise nhận được Promise
+    function (resolve, reject) {
+        // Logic
+        // Thành công: resolve()
+        // Thất bại: reject()
+    }
+);
+
+promise
+    .then(function () {
+        console.log("Successfully");
+    })
+    .catch(function () {
+        console.log("Failure");
+    })
+    .finally(function () {
+        console.log("Done");
+    });
