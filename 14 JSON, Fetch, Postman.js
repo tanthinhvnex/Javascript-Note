@@ -31,13 +31,15 @@ console.log(
 // Các bất đồng bộ hay gặp: setTimeOut, setInterval, fetch
 // XMLHttpRequest, file reading,
 // request animation frame
+// Để xử lý các bất đồng bộ phía trước: dùng callback
 
-// Callback Hell
-// Pyramid of doom
+// Sử dụng callback gây ra 1 nỗi đau (pain) gọi là
+// Callback Hell + Pyramid of doom
 
 // Ví dụ về Pain
 // Việc bên trong phụ thuộc vào việc bên ngoài (Callback Hell)
 // Để làm được việc 2 thì cần phải xong việc 1
+// Việc trong bị phụ thuộc vào việc ngoài
 setTimeout(function () {
     console.log(1); // Viec 1
     setTimeout(function () {
@@ -67,12 +69,20 @@ var promise = new Promise(
         // Logic
         // Thành công: resolve()
         // Thất bại: reject()
+        // Nếu không gọi resolve, reject thì ở trạng thái pendding
+        // nếu gọi resolve() thì then thực hiện sau đó finally() thực hiện
+        // nếu gọi reject() thì catch thực hiện sau đó finally() thực hiện
+        resolve();
     }
 );
 
 promise
     .then(function () {
         console.log("Successfully");
+        return 1;
+    })
+    .then(function (data) {
+        console.log(data);
     })
     .catch(function () {
         console.log("Failure");
@@ -80,3 +90,13 @@ promise
     .finally(function () {
         console.log("Done");
     });
+
+// Tiếp tục về lý thuyết, cách hoạt động của Promise
+// có tính chất chuỗi, tức là 1 Promise có thể có
+// nhiều then, nhiều catch, nhiều finally
+// trả về của then trước, có thể được xem là tham số
+// đầu vào cho then sau
+// nếu không return hoặc return không phải là một Promise
+// thì then sau sẽ được thực thi ngay
+// nếu return Promise, thì chỉ khi Promise được thực thi xong
+// thì then sau mới được chạy
