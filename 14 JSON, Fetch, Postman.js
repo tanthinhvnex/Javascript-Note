@@ -100,3 +100,39 @@ promise
 // thì then sau sẽ được thực thi ngay
 // nếu return Promise, thì chỉ khi Promise được thực thi xong
 // thì then sau mới được chạy
+// cần phải đảm bảo luôn có then và catch
+
+// Promise.resolve
+// Promise.reject
+// Promise.all
+// Thư viện: output luôn luôn là 1 Promise
+
+// Sẽ luôn trả về một promise ở trạng thái resolve
+var test_promise = Promise.resolve("Thanh cong");
+test_promise.then(function (mess) {
+    console.log(mess);
+});
+
+// với Promise 1 và Promise 2
+// sẽ cần tổng thời gian là 7s để thực hiện
+// có thể thấy 2 công việc này không phụ thuộc vào nhau
+// nên có thể cho thực thi đồng thời
+var promise1 = new Promise(function (resolve) {
+    setTimeout(function () {
+        resolve([1]);
+    }, 1000);
+});
+var promise2 = new Promise(function (resolve) {
+    setTimeout(function () {
+        resolve([1, 2]);
+    }, 3000);
+});
+// để thực thi đồng thời làm giảm thời gian thực thi
+// từ 7s xuống còn 5s ta có thể dùng Promise.all
+Promise.all([promise1, promise2]).then(function (result) {
+    // Điều kiện để vào được đây là promise1, promise2 đều phải success
+    console.log(result);
+    var result1 = result[0];
+    var result2 = result[1];
+    console.log(result1.concat(result2));
+});
