@@ -16,5 +16,5 @@ function animate_string(id) {
         }
         str = str.slice(0, length);
         element.innerHTML = str;
-    }, 1000);
+    }, 5000);
 }
