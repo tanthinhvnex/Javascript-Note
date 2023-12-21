@@ -3,7 +3,6 @@
 
 let date = new Date("2014-01-01");
 for (let i = 2014; i <= 2050; i++) {
-    console.log(date.getFullYear());
     console.log(date.getDay() === 0 ? "Yes" : "No");
     date.setFullYear(i + 1);
 }
